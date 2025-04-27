@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSafe - About Us</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png">
+  <style>
+    /* Page-specific styles */
+    .hero {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 247, 255, 0.85));
+      padding: 100px 5% 80px;
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .hero-text {
+      flex: 1;
+      text-align: left;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 0;
+    }
+    
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    
+    .hero-image img:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .custom-section {
+      padding: 80px 5%;
+      background: rgba(255, 255, 255, 0.9);
+      margin: 30px 0;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .custom-section h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .custom-section h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 3px;
+    }
+    
+    .story-container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+    
+    .story-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+    
+    .story-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+    }
+    
+    .story-image img:hover {
+      transform: scale(1.05);
+    }
+    
+    .story-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .story-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    
+    .mission-list {
+      background: rgba(25, 118, 210, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+    
+    .mission-list ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .mission-list li {
+      padding: 15px 0 15px 35px;
+      position: relative;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .mission-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .mission-list li:before {
+      content: "\f058";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+    }
+    
+    .team-section {
+      padding: 100px 5%;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(240, 247, 255, 0.9));
+      position: relative;
+      margin-top: 60px;
+    }
+    
+    .team-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://img.freepik.com/free-photo/medical-banner-with-stethoscope_23-2149611199.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.03;
+      z-index: -1;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .team-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .team-img {
+      height: 280px;
+      overflow: hidden;
+    }
+    
+    .team-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    
+    .team-card:hover .team-img img {
+      transform: scale(1.1);
+    }
+    
+    .team-info {
+      padding: 25px;
+      text-align: center;
+    }
+    
+    .team-info h3 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+    
+    .team-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .team-social a {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .team-social a:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .stats-section {
+      background: linear-gradient(135deg, rgba(25, 118, 210, 0.9) 0%, rgba(13, 71, 161, 0.9) 100%);
+      color: var(--white);
+      padding: 70px 5%;
+      position: relative;
+      margin: 60px 0;
+      border-radius: 20px;
+    }
+    
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .stat-item {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+    
+    .wave-bottom {
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content {
+        flex-direction: column;
+      }
+      
+      .hero-text {
+        text-align: center;
+      }
+      
+      .hero-image {
+        margin-top: 30px;
+      }
+      
+      .story-container {
+        flex-direction: column;
+      }
+      
+      .custom-section h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .team-img {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Medical Background with Blur Morph Effect -->
+  <div class="morph-bg"></div>
+
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+  
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png" alt="MediSafe Logo">
+        <span class="logo-text">MediSafe</span>
+      </div>
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="alternatives.html">Alternatives</a></li>
+        <li><a href="remedies.html">Home Remedies</a></li>
+        <li><a href="ayurvedic.html">Ayurvedic</a></li>
+        <li><a href="report.html">Report Reaction</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>About MediSafe</h1>
+        <p>Improving healthcare through innovative technology and accessible information</p>
+      </div>
+      <div class="hero-image">
+        <img src="https://img.freepik.com/free-photo/doctor-with-stethoscope-hands-hospital-background_1423-1.jpg" alt="Healthcare Professional" class="floating-image">
+      </div>
+    </div>
+    <div class="wave-bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,128C384,128,480,160,576,186.7C672,213,768,235,864,224C960,213,1056,171,1152,154.7C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    </div>
+  </section>
+
+  <div class="custom-section">
+    <h2>Our Story</h2>
+    <div class="story-container">
+      <div class="story-image">
+        <img src="https://img.freepik.com/free-photo/medical-workers-covid-19-vaccination-concept-confident-professional-doctor-female-nurse-blue-scrubs-stethoscope-showing-thumbs-up-assure-vaccine-quality-standing-white-background_1258-57282.jpg" alt="Healthcare professionals">
+      </div>
+      <div class="story-text">
+        <p>Founded in 2025, MediSafe began with a simple mission: to make healthcare information more accessible and medication safety a priority for everyone. Our team of healthcare professionals, researchers, and technology experts came together to build a platform that bridges the gap between conventional medicine and alternative remedies.</p>
+        <p>What started as a small initiative has now grown into a comprehensive healthcare platform serving thousands of users worldwide. Our commitment to accuracy, user privacy, and continuous improvement drives everything we do.</p>
+        <p>Today, MediSafe stands as a trusted resource for both patients and healthcare providers seeking reliable information on medication alternatives, adverse drug reactions, and natural health solutions.</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="custom-section">
+    <h2>Our Mission</h2>
+    <div class="mission-list">
+      <ul>
+        <li>Enhance patient safety and medication management with a comprehensive platform</li>
+        <li>Provide an easy-to-use app to check drug reactions</li>
+        
+        <li>Bridge the gap between conventional and alternative medicine through evidence-based information</li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <div class="custom-section">
+    <h2>Our Approach</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-database"></i></div>
+        <h3 class="feature-title">Evidence-Based</h3>
+        <p class="feature-desc">All information is thoroughly researched and verified by healthcare professionals</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+        <h3 class="feature-title">User Privacy</h3>
+        <p class="feature-desc">Your health data is protected with industry-leading security measures</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-globe"></i></div>
+        <h3 class="feature-title">Accessible</h3>
+        <p class="feature-desc">Information presented in clear, easy-to-understand language for all users</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-container">
+        <div class="footer-col about-col">
+          <div class="footer-logo">
+            <img src="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png" alt="MediSafe Logo">
+            <span class="footer-logo-text">MediSafe</span>
+          </div>
+          <p>MediSafe is a user-friendly platform for healthcare providers and patients to easily check drug side-effects. Our mission is to improve safety and healthcare.</p>
+          <div class="social-media">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="alternatives.html">Medicine Alternatives</a></li>
+            <li><a href="remedies.html">Home Remedies</a></li>
+            <li><a href="ayurvedic.html">Ayurvedic Medicine</a></li>
+            <li><a href="report.html">Medicine Reaction</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-container">
+        <p>©MediSafe. All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p class="emergency-note"><i class="fas fa-exclamation-circle"></i> For medical emergencies, please call your local emergency number immediately.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+  <script>
+    // Loading screen
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.querySelector('.loading').classList.add('hidden');
+      }, 500);
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Create particle animation
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particlesCount = 20;
+      
+      for (let i = 0; i < particlesCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random position, size and delay
+        const size = Math.random() * 15 + 5;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    createParticles();
+    
+    // Animate stats on scroll
+    const statItems = document.querySelectorAll('.stat-number');
+    
+    function animateStats() {
+      statItems.forEach(item => {
+        const target = parseInt(item.textContent.replace(/,|\+|%/g, ''));
+        const suffix = item.textContent.includes('+') ? '+' : (item.textContent.includes('%') ? '%' : '');
+        let current = 0;
+        const increment = target / 50;
+        const duration = 1500;
+        const step = Math.ceil(duration / 50);
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            item.textContent = target + suffix;
+            clearInterval(timer);
+          } else {
+            item.textContent = Math.floor(current) + suffix;
+          }
+        }, step);
+      });
+    }
+    
+    // Check if element is in viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+    
+    // Trigger animation when stats section is in viewport
+    let animated = false;
+    window.addEventListener('scroll', () => {
+      if (!animated && document.querySelector('.stats-section') && isInViewport(document.querySelector('.stats-section'))) {
+        animateStats();
+        animated = true;
+      }
+    });
+    
+    // Check on load as well
+    window.addEventListener('load', () => {
+      if (!animated && document.querySelector('.stats-section') && isInViewport(document.querySelector('.stats-section'))) {
+        animateStats();
+        animated = true;
+      }
+    });
+  </script>
+</body>
+</html>
