@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSafe - Create Account</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Medical Background with Blur Morph Effect -->
+  <div class="morph-bg"></div>
+
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+  
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png" alt="MediSafe Logo">
+        <span class="logo-text">MediSafe</span>
+      </div>
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="alternatives.html">Alternatives</a></li>
+        <li><a href="remedies.html">Home Remedies</a></li>
+        <li><a href="ayurvedic.html">Ayurvedic</a></li>
+        <li><a href="report.html">Medicine Reaction</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="auth-section">
+    <div class="auth-container">
+      <div class="auth-form">
+        <h2>Create Account</h2>
+        <p>Join MediSafe to access personalized healthcare information and services</p>
+        
+        <form id="signupForm" class="med-form">
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="name" placeholder="Full Name" required>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Email Address" required>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="Password" required>
+            <small>Password must be at least 8 characters long</small>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-phone"></i>
+            <input type="tel" id="phone" placeholder="Phone Number (Optional)">
+          </div>
+ 
+          <button type="submit">Create Account</button>
+        </form>
+
+        <div id="message"></div>
+        
+        <div class="auth-links">
+          <p>Already have an account? <a href="signin.html">Sign In</a></p>
+        </div>
+      </div>
+      
+      <div class="auth-image">
+        <img src="https://thaka.bing.com/th/id/OIP.1mKoSN8qu5ISmL7ZISer-wHaGN?rs=1&pid=ImgDetMain" alt="Healthcare illustration">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-container">
+        <div class="footer-col about-col">
+          <div class="footer-logo">
+            <img src="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png" alt="MediSafe Logo">
+            <span class="footer-logo-text">MediSafe</span>
+          </div>
+          <p>MediSafe is a user-friendly platform for healthcare providers and patients to easily check drug side-effects. Our mission is to improve safety and healthcare.</p>
+          <div class="social-media">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="alternatives.html">Medicine Alternatives</a></li>
+            <li><a href="remedies.html">Home Remedies</a></li>
+            <li><a href="ayurvedic.html">Ayurvedic Medicine</a></li>
+            <li><a href="report.html">Medicine Reaction</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-container">
+        <p>©MediSafe. All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p class="emergency-note"><i class="fas fa-exclamation-circle"></i> For medical emergencies, please call your local emergency number immediately.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Form submission
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simple validation
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const termsChecked = document.getElementById('terms').checked;
+      
+      if (name && email && password && password.length >= 8 && termsChecked) {
+        // Show success message (in a real app, this would be an API call)
+        showMessage('Account created successfully! Please check your email to verify your account.', 'success', this);
+        
+        // Simulate redirect after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'signin.html';
+        }, 2000);
+      } else if (password.length < 8) {
+        showMessage('Password must be at least 8 characters long', 'error', this);
+      } else if (!termsChecked) {
+        showMessage('Please agree to the terms and conditions', 'error', this);
+      } else {
+        showMessage('Please fill in all required fields', 'error', this);
+      }
+    });
+    
+    // Helper function to show messages
+    function showMessage(text, type, form) {
+      const messageElement = document.getElementById('message');
+      if (messageElement) {
+        messageElement.textContent = text;
+        messageElement.className = type;
+        messageElement.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

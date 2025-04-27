@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSafe - Home Remedies</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png">
+  <style>
+    /* Page-specific styles */
+    .hero {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 247, 255, 0.85));
+      padding: 100px 5% 80px;
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .hero-text {
+      flex: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+    
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    
+    .hero-image img:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .features-section {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(240, 247, 255, 0.9));
+      padding: 100px 5%;
+      position: relative;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .features-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://img.freepik.com/free-photo/medical-banner-with-stethoscope_23-2149611199.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.03;
+      z-index: -1;
+      border-radius: 0 0 30px 30px;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .feature-card {
+      padding: 40px 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(25, 118, 210, 0.1);
+      transform: translateY(0);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      cursor: pointer;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(25, 118, 210, 0.15);
+      border-color: rgba(25, 118, 210, 0.3);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 25px;
+    }
+    
+    .feature-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .feature-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    
+    .search-section {
+      background: linear-gradient(to right, rgba(25, 118, 210, 0.9), rgba(13, 71, 161, 0.95));
+      border-radius: 20px;
+      padding: 60px;
+      margin: 50px auto;
+      max-width: 900px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .search-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .search-section p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .search-box {
+      position: relative;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 18px 50px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .search-box input:focus {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      outline: none;
+    }
+    
+    .search-box i {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+    
+    .search-button {
+      background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .search-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .remedies-info {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      background: white;
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin: 50px auto;
+      max-width: 1200px;
+    }
+    
+    .remedies-image {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .remedies-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+    }
+    
+    .remedies-image img:hover {
+      transform: scale(1.03);
+    }
+    
+    .remedies-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .remedies-content h3 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .remedies-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+    }
+    
+    .remedies-content ul {
+      padding-left: 20px;
+    }
+    
+    .remedies-content li {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      position: relative;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 80px 5% 60px;
+      }
+      
+      .hero-content {
+        flex-direction: column;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-image {
+        margin-top: 30px;
+      }
+      
+      .remedies-info {
+        padding: 30px;
+      }
+      
+      .search-section {
+        padding: 40px 20px;
+      }
+      
+      .search-section h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Medical Background with Blur Morph Effect -->
+  <div class="morph-bg"></div>
+  
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+  
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png" alt="MediSafe Logo">
+        <span class="logo-text">MediSafe</span>
+      </div>
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="alternatives.html">Alternatives</a></li>
+        <li><a href="remedies.html" class="active">Home Remedies</a></li>
+        <li><a href="ayurvedic.html">Ayurvedic</a></li>
+        <li><a href="report.html">Medicine Reaction</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Home Remedies</h1>
+        <p>Natural solutions for everyday health concerns that have been trusted for generations. Discover time-tested remedies using ingredients you likely already have at home.</p>
+      </div>
+      <div class="hero-image">
+        <img src="https://img.freepik.com/free-photo/natural-remedy-ingredients-flat-lay_23-2149309649.jpg" alt="Home Remedies" class="floating-image">
+      </div>
+    </div>
+    <div class="wave-bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,128C384,128,480,160,576,186.7C672,213,768,235,864,224C960,213,1056,171,1152,154.7C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    </div>
+  </section>
+
+  <section>
+    <div class="remedies-info">
+      <div class="remedies-image">
+        <img src="https://img.freepik.com/free-photo/flat-lay-natural-remedy-ingredients_23-2149313584.jpg" alt="Natural Remedies">
+      </div>
+      <div class="remedies-content">
+        <h3>Natural Healing Solutions</h3>
+        <p>Home remedies have been used for generations to treat common ailments without the need for pharmaceuticals. These natural solutions can often provide relief with minimal side effects and are typically made from accessible, everyday ingredients.</p>
+        <h3>Benefits of Home Remedies:</h3>
+        <ul>
+          <li>Cost-effective alternatives to over-the-counter medications</li>
+          <li>Often have fewer side effects than pharmaceutical options</li>
+          <li>Can be prepared with ingredients commonly found at home</li>
+          <li>Empower individuals to take control of their health</li>
+          <li>Support sustainable and traditional healthcare practices</li>
+          <li>Can be combined with conventional medical treatments</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="section-header">
+      <h2>Common Home <span class="highlight">Remedies</span></h2>
+      <p>Simple and effective natural solutions for everyday health concerns</p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-head-side-virus"></i></div>
+        <h3 class="feature-title">Headache Relief</h3>
+        <p class="feature-desc">Stay hydrated, apply a cold compress to your forehead, rest in a dark quiet room, and try peppermint tea or essential oil for tension headaches.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-lungs"></i></div>
+        <h3 class="feature-title">Sore Throat</h3>
+        <p class="feature-desc">Gargle with warm salt water, drink honey and lemon tea, use throat lozenges with honey or herbs, and stay hydrated to soothe irritation.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-apple-alt"></i></div>
+        <h3 class="feature-title">Digestive Issues</h3>
+        <p class="feature-desc">Sip ginger or peppermint tea, try the BRAT diet (bananas, rice, applesauce, toast), and consume probiotics like yogurt for gut health.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bed"></i></div>
+        <h3 class="feature-title">Sleep Problems</h3>
+        <p class="feature-desc">Try chamomile tea, lavender essential oil, warm milk with honey, and maintain a consistent sleep schedule to improve sleep quality.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="search-section">
+    <h2>Find Personalized Remedies</h2>
+    <p>Looking for specific home remedies for your condition? Our database contains hundreds of verified natural solutions tailored to your needs.</p>
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search for a condition or symptom...">
+    </div>
+    <button class="search-button">Find Remedies</button>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-container">
+        <div class="footer-col about-col">
+          <div class="footer-logo">
+            <img src="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png" alt="MediSafe Logo">
+            <span class="footer-logo-text">MediSafe</span>
+          </div>
+          <p>MediSafe is a user-friendly platform for healthcare providers and patients to easily check drug side-effects. Our mission is to improve safety and healthcare.</p>
+          <div class="social-media">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="alternatives.html">Medicine Alternatives</a></li>
+            <li><a href="remedies.html">Home Remedies</a></li>
+            <li><a href="ayurvedic.html">Ayurvedic Medicine</a></li>
+            <li><a href="report.html">Medicine Reaction</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-container">
+        <p>©MediSafe. All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p class="emergency-note"><i class="fas fa-exclamation-circle"></i> For medical emergencies, please call your local emergency number immediately.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Loading screen
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.querySelector('.loading').classList.add('hidden');
+      }, 500);
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Create particle animation
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particlesCount = 20;
+      
+      for (let i = 0; i < particlesCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random position, size and delay
+        const size = Math.random() * 15 + 5;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    createParticles();
+  </script>
+</body>
+</html>

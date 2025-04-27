@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSafe - Medication Alternatives</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png">
+  <style>
+    /* Page-specific styles */
+    .hero {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 247, 255, 0.85));
+    }
+    
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    
+    .hero-image img {
+      filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
+      transform: scale(1.05);
+    }
+    
+
+    
+    .features-section {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(240, 247, 255, 0.9));
+      padding: 100px 5%;
+      position: relative;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .features-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://img.freepik.com/free-photo/medical-banner-with-stethoscope_23-2149611199.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.03;
+      z-index: -1;
+      border-radius: 0 0 30px 30px;
+    }
+    
+    .feature-card {
+      padding: 40px 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(25, 118, 210, 0.1);
+      transform: translateY(0);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(25, 118, 210, 0.15);
+      border-color: rgba(25, 118, 210, 0.3);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 25px;
+    }
+    
+    .feature-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .feature-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    
+    .cta-section {
+      margin-top: -30px;
+      padding: 150px 5% 100px;
+      background: linear-gradient(rgba(13, 71, 161, 0.85), rgba(25, 118, 210, 0.9)), url('https://img.freepik.com/free-photo/doctor-with-stethoscope-hands-hospital-background_1423-1.jpg') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-content {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+    }
+    
+    .cta-content h2 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cta-content p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+    }
+    
+    .outline-button {
+      font-size: 1.1rem;
+      padding: 15px 35px;
+      border-width: 3px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    footer {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Medical Background with Blur Morph Effect -->
+  <div class="morph-bg"></div>
+  
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+  
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png" alt="MediSafe Logo">
+        <span class="logo-text">MediSafe</span>
+      </div>
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="alternatives.html" class="active">Alternatives</a></li>
+        <li><a href="remedies.html">Home Remedies</a></li>
+        <li><a href="ayurvedic.html">Ayurvedic</a></li>
+        <li><a href="report.html">Medicine Reaction</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1><span class="highlight">Medication</span> Alternatives</h1>
+        <p>Discover effective natural alternatives to conventional medications and treatments. Explore evidence-based options for a more holistic approach to your health.</p>
+        <div class="hero-buttons">
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://img.freepik.com/free-photo/herbal-medicine-mortar-table_23-2148516552.jpg" alt="Natural Alternatives" class="floating-image">
+        <div class="hero-stat-card">
+          <i class="fas fa-leaf"></i>
+          <span>Natural Options</span>
+        </div>
+        <div class="hero-stat-card">
+          <i class="fas fa-flask"></i>
+          <span>Evidence-Based</span>
+        </div>
+      </div>
+    </div>
+    <div class="wave-bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,128C384,128,480,160,576,186.7C672,213,768,235,864,224C960,213,1056,171,1152,154.7C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    </div>
+  </section>
+
+  <section>
+  
+      
+      
+  </section>
+
+  <section id="alternatives-section" class="features-section">
+    <div class="section-header">
+      <h2>Alternative <span class="highlight">Approaches</span></h2>
+      <p>Explore these evidence-based alternative approaches to conventional medications</p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card" data-category="herbal">
+        <div class="feature-icon"><i class="fas fa-mortar-pestle"></i></div>
+        <h3 class="feature-title">Herbal Medicine</h3>
+        <p class="feature-desc">Natural plant-based remedies with scientifically studied benefits for many health conditions and minimal side effects.</p>
+       
+      </div>
+      
+      
+      
+      <div class="feature-card" data-category="ayurvedic">
+        <div class="feature-icon"><i class="fas fa-spa"></i></div>
+        <h3 class="feature-title">Ayurvedic Medicine</h3>
+        <p class="feature-desc">Ancient Indian healing system that focuses on balance between mind, body, and spirit using natural herbs and lifestyle changes.</p>
+         
+      </div>
+      
+      
+      
+      <div class="feature-card" data-category="dietary">
+        <div class="feature-icon"><i class="fas fa-apple-alt"></i></div>
+        <h3 class="feature-title">Dietary Changes</h3>
+        <p class="feature-desc">Targeted nutrition and diet modifications that can reduce symptoms and sometimes eliminate the need for certain medications.</p>
+      
+      </div>
+      
+      <div class="feature-card" data-category="mind-body">
+        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+        <h3 class="feature-title">Mind-Body Practices</h3>
+        <p class="feature-desc">Meditation, yoga, and mindfulness techniques that can effectively manage stress, pain, and various chronic conditions.</p>
+       
+      </div>
+    </div>
+  </section>
+   
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Looking for personalized recommendations?</h2>
+      <p>Get expert advice on natural alternatives specific to your health condition and medication regimen.</p>
+      <div class="cta-buttons">
+        <a href="signup.html" class="outline-button">Join Our Community</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-container">
+        <div class="footer-col about-col">
+          <div class="footer-logo">
+            <img src="https://medisafe.com.ph/wp-content/uploads/2021/03/cropped-medisafe-logo_whitebg.png" alt="MediSafe Logo">
+            <span class="footer-logo-text">MediSafe</span>
+          </div>
+          <p>MediSafe is a user-friendly platform for healthcare providers and patients to easily check drug side-effects. Our mission is to improve safety and healthcare.</p>
+          <div class="social-media">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="alternatives.html">Medicine Alternatives</a></li>
+            <li><a href="remedies.html">Home Remedies</a></li>
+            <li><a href="ayurvedic.html">Ayurvedic Medicine</a></li>
+            <li><a href="report.html">Medicine Reaction</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-container">
+        <p>©MediSafe. All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p class="emergency-note"><i class="fas fa-exclamation-circle"></i> For medical emergencies, please call your local emergency number immediately.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Learn More Details -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-header">
+        <h2 id="modalTitle"></h2>
+      </div>
+      <div class="modal-body" id="modalBody">
+      </div>
+      <div class="modal-footer">
+        <button class="cta-button" id="modalClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Loading screen
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.querySelector('.loading').classList.add('hidden');
+      }, 500);
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Hero Buttons functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add hover effects to feature cards
+      const featureCards = document.querySelectorAll('.feature-card');
+      
+      featureCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-15px) scale(1.03)';
+          this.style.boxShadow = '0 25px 50px rgba(25, 118, 210, 0.18)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+          this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.06)';
+        });
+        
+        // Make entire card clickable to go to relevant page
+        card.addEventListener('click', function() {
+          const category = this.dataset.category;
+          switch(category) {
+            case 'herbal':
+              window.location.href = 'remedies.html';
+              break;
+            case 'ayurvedic':
+              window.location.href = 'ayurvedic.html';
+              break;
+            default:
+              // For other categories, we could add pages later
+              alert('Learn more about ' + this.querySelector('.feature-title').textContent);
+          }
+        });
+      });
+    });
+
+    // Create particle animation
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particlesCount = 20;
+      
+      for (let i = 0; i < particlesCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random position, size and delay
+        const size = Math.random() * 15 + 5;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    createParticles();
+  </script>
+</body>
+</html>
